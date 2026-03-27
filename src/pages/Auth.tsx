@@ -5,7 +5,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Stethoscope } from 'lucide-react';
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -48,10 +47,10 @@ export default function Auth() {
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-primary">
-            <Stethoscope className="h-6 w-6 text-primary-foreground" />
+          <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-primary">
+            <span className="text-primary-foreground font-bold text-lg">CH</span>
           </div>
-          <CardTitle className="text-2xl">Smile Clinic</CardTitle>
+          <CardTitle className="text-2xl">Clinic Hub</CardTitle>
           <CardDescription>
             {isLogin ? 'Entre na sua conta' : 'Crie sua conta'}
           </CardDescription>

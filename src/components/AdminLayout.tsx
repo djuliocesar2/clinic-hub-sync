@@ -1,14 +1,11 @@
 import { ReactNode } from 'react';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AdminSidebar } from '@/components/AdminSidebar';
-import { useAuth } from '@/contexts/AuthContext';
 import { useRole } from '@/contexts/RoleContext';
-import { Stethoscope } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 export function AdminLayout({ children }: { children: ReactNode }) {
-  const { user } = useAuth();
-  const { role } = useRole();
+  const { role, profile } = useRole();
 
   const roleLabels: Record<string, string> = {
     admin: 'Administrador',
@@ -24,11 +21,13 @@ export function AdminLayout({ children }: { children: ReactNode }) {
           <header className="h-14 flex items-center border-b bg-card px-4 gap-4">
             <SidebarTrigger />
             <div className="flex items-center gap-2">
-              <Stethoscope className="h-5 w-5 text-primary" />
-              <span className="font-semibold text-foreground">Smile Clinic</span>
+              <div className="h-7 w-7 rounded-md bg-primary flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-xs">CH</span>
+              </div>
+              <span className="font-semibold text-foreground">Clinic Hub</span>
               <Badge variant="secondary" className="text-xs">{roleLabels[role ?? ''] ?? 'Staff'}</Badge>
             </div>
-            <div className="ml-auto text-sm text-muted-foreground">{user?.email}</div>
+            <div className="ml-auto text-sm text-muted-foreground">{profile?.full_name || ''}</div>
           </header>
           <main className="flex-1 p-6 overflow-auto">{children}</main>
         </div>
